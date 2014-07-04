@@ -1,0 +1,80 @@
+<h1>Summary Statistics</h1>
+
+<h3>Games Played: <%= Game.count %></h3>
+
+    <% if Game.count > 0 %>
+<table>
+  <thead>
+    <tr>
+      <th>Played</th>
+      <th>Buyin</th>
+      <th>Won</th>
+      <th>Profit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= game.played %></td>
+          <td><%= game.buyin %></td>
+          <td><%= game.buyout %></td>
+          <td><%= game.buyout - game.buyin %></td>
+          <td><%= link_to 'Show', game %></td>
+          <td><%= link_to 'Edit', edit_game_path(game) %></td>
+          <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+ </table>
+
+ <h3>Total Profits to date: 
+  <% totalbuyin = 0.0 %>
+  <% totalwinnings = 0.0 %>
+  <% @games.each do |game| %>
+  <% totalbuyin += game.buyin %>
+  <% totalwinnings += game.buyout %>
+  <% end %>
+  <%= totalwinnings.to_i - totalbuyin.to_i %></h3>
+
+<h3>Average Profit Per Game:
+  <% if Game.count > 0 %>
+    <% avg = (totalwinnings - totalbuyin) / Game.count %>
+    <%= avg.round(2) %></h3>
+  <% else %>
+    No Games</h3>
+  <% end %>
+
+<h3>Last game played
+  <% days = [] %>
+  <% @games.each do |game| %>
+    <% day = (Time.now - game.played.to_datetime) / 86000 %>
+    <% days << day.round %>
+  <% end %>
+  <%= days.min.round - 1 %> days ago</h3>
+
+
+<%= link_to 'Back', games_path %>
+<%= link_to 'New Game', new_game_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
