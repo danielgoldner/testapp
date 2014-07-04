@@ -1,8 +1,10 @@
+<% unless @games.count == 0 %>
+
 <h1>Summary Statistics</h1>
 
-<h3>Games Played: <%= Game.count %></h3>
+<h3>Games Played: <%= @games.count %></h3>
 
-    <% if Game.count > 0 %>
+    <% if @games.count > 0 %>
 <table>
   <thead>
     <tr>
@@ -40,8 +42,8 @@
   <%= totalwinnings.to_i - totalbuyin.to_i %></h3>
 
 <h3>Average Profit Per Game:
-  <% if Game.count > 0 %>
-    <% avg = (totalwinnings - totalbuyin) / Game.count %>
+  <% if @games.count > 0 %>
+    <% avg = (totalwinnings - totalbuyin) / @games.count %>
     <%= avg.round(2) %></h3>
   <% else %>
     No Games</h3>
@@ -53,13 +55,14 @@
     <% day = (Time.now - game.played.to_datetime) / 86000 %>
     <% days << day.round %>
   <% end %>
-  <%= days.min.round - 1 %> days ago</h3>
-
+    <%= days.min.round - 1 %> days ago</h3>
 
 <%= link_to 'Back', games_path %>
 <%= link_to 'New Game', new_game_path %>
 
-
+<% else %>
+<h3>No Games Entered!</h3>
+<% end %>
 
 
 

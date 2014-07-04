@@ -1,5 +1,5 @@
 class StatsController < ApplicationController
   def show
-  	@games = Game.all
+  	@games = current_user.games.all
   end
 end
