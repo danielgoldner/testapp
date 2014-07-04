@@ -57,12 +57,13 @@
   <% end %>
     <%= days.min.round - 1 %> days ago</h3>
 
-<%= link_to 'Back', games_path %>
-<%= link_to 'New Game', new_game_path %>
-
 <% else %>
 <h3>No Games Entered!</h3>
 <% end %>
+
+<%= link_to 'Back', games_path %>
+<%= link_to 'New Game', new_game_path %>
+
 
 
 
