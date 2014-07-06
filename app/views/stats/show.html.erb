@@ -25,7 +25,7 @@
     <% day = (Time.now - game.played.to_datetime) / 86000 %>
     <% days << day.round %>
   <% end %>
-    <%= days.min.round - 1 %> days ago</h3>
+    <%= pluralize(days.min, "day") %> ago</h3>
 
 <h3>Games Played: <%= @games.count %></h3>
 
