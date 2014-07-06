@@ -21,4 +21,5 @@
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %> |
 <%= link_to 'Statistics', stats_show_path %> |
-<%= link_to 'New Game', new_game_path %>
+<%= link_to 'New Game', new_game_path %> |
+<%= link_to 'Logout', :destroy_user_session, method: :delete %>
