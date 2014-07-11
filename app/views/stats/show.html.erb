@@ -1,33 +1,38 @@
 <% unless @games.count == 0 %>
+<div class='centered'>
+<h2>Summary Statistics</h2>
 
-<h1>Summary Statistics</h1>
+<h3>You have played 
+<%= pluralize(@games.count, "game") %>
+so far.</h3>
 
-<h3>Total Profits to date: 
-  <% totalbuyin = 0.0 %>
-  <% totalwinnings = 0.0 %>
-  <% @games.each do |game| %>
-  <% totalbuyin += game.buyin %>
-  <% totalwinnings += game.buyout %>
-  <% end %>
-  <%= totalwinnings.to_i - totalbuyin.to_i %></h3>
+<h3>So far you have
+<% if @profit > 1 %>
+  won $<%= @profit %>. Well done!
+<% elsif @profit < 0 %>
+  lost $<%= @profit.abs %>, you degenerate.
+<% else %>
+  broke even. Meh.
+<% end %>
 
-<h3>Average Profit Per Game:
-  <% if @games.count > 0 %>
-    <% avg = (totalwinnings - totalbuyin) / @games.count %>
-    <%= avg.round(2) %></h3>
-  <% else %>
-    No Games</h3>
-  <% end %>
+</h3>
+
+<h3>You have
+<% if @profit > 1 %>
+  won an average of $<%= (@profit.to_f / @games.count).round(2) %> per game. Nice.
+<% elsif @profit < 0 %>
+  lost an average of $<%= (@profit.to_f / @games.count).round(2) %> per game. :-/
+<% else %>
+  an average winnings of zero. Talk about a waste of time...
+<% end %>
 
 <h3>Last game played
   <% days = [] %>
   <% @games.each do |game| %>
     <% day = (Time.now - game.played.to_datetime) / 86000 %>
-    <% days << day.round %>
+    <% days << day.floor %>
   <% end %>
-    <%= pluralize(days.min, "day") %> ago</h3>
-
-<h3>Games Played: <%= @games.count %></h3>
+    <%= pluralize(days.min, "day") %> ago.</h3>
 
     <% if @games.count > 0 %>
 <table>
@@ -60,12 +65,13 @@
 <% else %>
 <h3>No Games Entered!</h3>
 <% end %>
-
+</div>
 </br>
+<div class='links'>
 <%= link_to 'Back', games_path %> |
 <%= link_to 'New Game', new_game_path %> |
 <%= link_to 'Logout', :destroy_user_session, method: :delete %>
-
+</div>
 
 
 

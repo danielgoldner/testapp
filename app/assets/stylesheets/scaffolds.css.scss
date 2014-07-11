@@ -10,40 +10,10 @@ html,body {
   margin: 0 0;
 }
 
-h1
-{
-  color: #0d430f;
-  text-size: 20px;
-}
-
-h2
-{
-  text-align:center;
-  text-size: 30px;
-}
-
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-}
-
-section#header
-{
-  position: absolute;
-  top: 0;
-  bottom: 90%;
-  left: 0;
-  right: 0;
-}
-
-section#main
-{
-  position: absolute;
-  top: 10%;
-  bottom: 0;
-  right: 0;
-  left: 0;
 }
 
 table
@@ -113,68 +83,6 @@ div {
   }
 }
 
-div.signup
-{
-  float: right;
-}
-
-label
-{
-  text-size: 1.5em;
-}
-
-input:not(#user_remember_me):not(.btn)
-{
-  width:280px;
-    height:27px;
-    background:#fafefa;
-    border:1px solid #646262;
-    padding:10px;
-    margin-top:3px;
-    font-size:1.5em;
-    color:#646262;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    border-radius:5px;
-}
-
-input.btn
-{
-  border-radius:5px;
-  background: #0d430f;
-  color: #fafefa;
-  height: 27px;
-  width: 140px;
- &:hover {
-  cursor:pointer;
-  }
-}
-
-div#sign
-{
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -100px;
-
-}
-
-div#signup > a
-{
-  text-decoration: none;
-  text-size: 2.1em;
-}
-
-div#forget
-{
-  position:absolute;
-  top:25%;
-  left: 50%;
-  margin-top: 150px;
-  margin-left: -100px;
-
-}
 
 
 
