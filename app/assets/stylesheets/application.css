@@ -37,6 +37,7 @@ input:not(#user_remember_me):not(.btn)
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
     border-radius:5px;
+    margin: 0 auto;
 }
 
 input.btn
@@ -46,10 +47,13 @@ input.btn
   color: #fafefa;
   height: 27px;
   width: 140px;
- &:hover {
-  cursor:pointer;
-  }
 }
+
+input.btn:hover
+{
+  cursor: pointer;
+}
+
 
 div#sign
 {

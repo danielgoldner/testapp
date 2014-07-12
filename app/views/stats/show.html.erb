@@ -21,7 +21,7 @@ so far.</h3>
 <% if @profit > 1 %>
   won an average of $<%= (@profit.to_f / @games.count).round(2) %> per game. Nice.
 <% elsif @profit < 0 %>
-  lost an average of $<%= (@profit.to_f / @games.count).round(2) %> per game. :-/
+  lost an average of $<%= (@profit.to_f / @games.count).round(2).abs %> per game. :-/
 <% else %>
   an average winnings of zero. Talk about a waste of time...
 <% end %>
@@ -38,10 +38,10 @@ so far.</h3>
 <table>
   <thead>
     <tr>
-      <th>Played</th>
-      <th>Buyin</th>
-      <th>Won</th>
-      <th>Profit</th>
+      <th><%= sortable "played" %></th>
+      <th><%= sortable "buyin" %></th>
+      <th><%= sortable "buyout", 'won' %></th>
+      <th><%= sortable "profit" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
