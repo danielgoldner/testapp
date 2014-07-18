@@ -26,10 +26,11 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = current_user.games.new(game_params)
+    @game.profit = @game.buyout - @game.buyin
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to stats_show_path}
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -41,6 +42,8 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
+    @game.profit = @game.buyout - @game.buyin
+
     respond_to do |format|
       if @game.update(game_params)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
@@ -70,6 +73,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:played, :buyin, :buyout)
+      params.require(:game).permit(:played, :buyin, :buyout, :gametype)
     end
 end

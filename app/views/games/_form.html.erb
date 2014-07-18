@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label "Game Type" %><br>
+    <%= f.select :gametype, options_for_select(%w(Tournament Cash)) %><br>
+  </div>
+  <div class="field">
     <%= f.label :played %><br>
     <%= f.date_select :played %>
   </div>

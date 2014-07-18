@@ -40,24 +40,27 @@ so far.</h3>
     <tr>
       <th><%= sortable "played" %></th>
       <th><%= sortable "buyin" %></th>
-      <th><%= sortable "buyout", 'won' %></th>
+      <th><%= sortable "buyout", 'Won' %></th>
       <th><%= sortable "profit" %></th>
+      <th><%= sortable "gametype", 'Type' %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
       <% @games.each do |game| %>
         <tr>
-          <td><%= game.played %></td>
-          <td><%= game.buyin %></td>
-          <td><%= game.buyout %></td>
-          <td><%= game.buyout - game.buyin %></td>
-          <td><%= link_to 'Show', game %></td>
+          <td><%= filterable game.played, 'played' %></td>
+          <td><%= filterable game.buyin, 'buyin' %></td>
+          <td><%= filterable game.buyout, 'buyout' %></td>
+          <td><%= filterable game.profit, 'profit' %></td>
+          <td><%= filterable game.gametype, 'gametype' %></td>
+          <td> | </td>
           <td><%= link_to 'Edit', edit_game_path(game) %></td>
-          <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
         </tr>
       <% end %>
+      <p class='centered'><%= filterable "Clear Filter" %></p>
     <% end %>
   </tbody>
  </table>
